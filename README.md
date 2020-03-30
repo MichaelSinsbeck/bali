@@ -1,4 +1,4 @@
-#bali - A python package for Bayesian likelihood estimation
+# bali - A python package for Bayesian likelihood estimation
 
 If you use this package for your research, please cite the following article:
 
@@ -13,7 +13,7 @@ This package uses `numpy` and `scipy`. For some rather uncommon ways of handling
 
 Consider a model of the form f(x) + e, where f is a model function (for example a simulator), x represents unknown input parameters and e is an additive normally distributed measurement error.
 
-After measuring some output data d, we would like to compute the likelihood of x given D: L(x|d)
+After measuring some output data d, we would like to compute the likelihood of x given d: L(x|d)
 
 This likelihood is large, if f(x) is close to d.
 
@@ -25,14 +25,7 @@ Solving optimization with Gaussian processes is called "Bayesian Optimization". 
 
 The likelihood is useful in two types of problems: (1) Bayesian inverse problems and (2) Bayesian selection problems. This package provides the functionality to solve both of these types.
 
-
-
-
-
-requirements
-emcee only when using "linearize" or "average"
-
-##Quickstart
+## Quickstart
 This repository contains examples to show how the package is used. Study the code inside to see, how this package is used.
 
 `example_inverse.py` shows how to set up an inverse problem and solve it using bali
@@ -171,7 +164,9 @@ gpe.n_walkers = 10
 
 With the problem and gpe in place, we now create a sequential-design-object
 
+```python
 sd = bl.SequentialDesign(problem, gpe, acq='inverse', allocation='acq')
+```
 
 - `problem` is a problem object, see above
 - `gpe` is a gpe-object, see above, or - in case of a selection problem - a list of gpe-objects
@@ -186,6 +181,7 @@ The sequential design computes integrals and optimizes only on a subsample. The 
 ```python
 sd.n_subsample = 500
 ```
+Set it to `np.inf` to disable subsampling.
 
 ### Start Iteration
 
@@ -223,7 +219,7 @@ If the model functions themselves are fast, such that we can tabulate the whole 
 - `sd.error_lbme()` computes the errors in the (log)-BMEs in terms of kl-divergence. The output is of size `(n_iter)`.
 
 
-##Array sizes
+## Array sizes
 It is important that all of the parameters have the correct size. We need the following numbers:
 
 - `n_x` - This is the number of points representing the input `x` of a model.

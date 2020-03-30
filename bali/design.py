@@ -93,7 +93,6 @@ class SequentialDesign:
             for k in range(self.problem.n_models):
                 self.update_acq(k)
             
-            #new_k = np.argmax(self.acq_max)
             new_k = self.allocation_strategy()
             self.k_list.append(new_k)
             
